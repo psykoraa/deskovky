@@ -1,204 +1,158 @@
 :root {
-  --bg: #26262a;
+  --bg: #1f1f23;
+  --bg-alt: #2a2a2f;
+  --card: #34343a;
   --yellow: #ffd913;
+  --text: #f2f2f2;
+  --muted: #b9b9c0;
   --ink: #0b0b0b;
-  --paper: #fff;
+  --radius: 10px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
 
 body {
-  min-height: 100vh;
-  background-color: var(--bg);
-  /* "posypané" tmavé pozadí jako na plakátu */
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,.55) 0 1.5px, transparent 2px),
-    radial-gradient(circle, rgba(255,255,255,.35) 0 1px, transparent 1.5px),
-    radial-gradient(circle, rgba(255,255,255,.25) 0 2.5px, transparent 3px);
-  background-size: 130px 110px, 77px 91px, 211px 173px;
-  background-position: 0 0, 31px 47px, 90px 20px;
-  color: #fff;
+  background: var(--bg);
+  color: var(--text);
   font-family: "Josefin Sans", system-ui, sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
-a { color: inherit; }
+a { color: var(--yellow); }
+.container { width: min(1040px, 100% - 2rem); margin-inline: auto; }
+.narrow { max-width: 680px; text-align: center; }
 
-/* ---------- Hero ---------- */
+/* Hlavička */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(31, 31, 35, .95);
+  backdrop-filter: blur(6px);
+  border-bottom: 2px solid var(--yellow);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-block: .7rem;
+}
+.brand {
+  font-family: "Rubik Mono One", "Lilita One", sans-serif;
+  font-size: 1.3rem;
+  color: var(--yellow);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.site-header ul { list-style: none; display: flex; gap: 1.4rem; flex-wrap: wrap; }
+.site-header nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: .95rem;
+}
+.site-header nav a:hover { color: var(--yellow); }
+
+/* Hero */
 .hero {
   text-align: center;
-  padding: 4rem 1rem 3rem;
+  padding: 5rem 0 4.5rem;
+  background: linear-gradient(180deg, var(--bg-alt), var(--bg));
 }
-
-.logo {
+h1 {
   font-family: "Rubik Mono One", "Lilita One", Impact, sans-serif;
   font-weight: 400;
-  font-size: clamp(2.6rem, 11vw, 8rem);
-  line-height: 1;
+  font-size: clamp(2.4rem, 10vw, 5.5rem);
+  line-height: 1.1;
   color: var(--yellow);
-  position: relative;
-  display: inline-block;
-  letter-spacing: .01em;
-}
-.logo::before, .tagline::before {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  transform: translate(.05em, .05em);
-  color: var(--ink);
-  z-index: -1;
-}
-.logo { z-index: 0; isolation: isolate; }
-
-.tagline {
-  position: relative;
-  isolation: isolate;
-  display: block;
-  max-width: 900px;
-  margin: 1.8rem auto 2rem;
-  font-family: "Lilita One", sans-serif;
-  font-size: clamp(1.1rem, 3.2vw, 1.9rem);
   text-transform: uppercase;
-  color: var(--yellow);
-  letter-spacing: .02em;
 }
-.tagline::before { transform: translate(.07em, .07em); }
+.lead {
+  max-width: 640px;
+  margin: 1.2rem auto 2rem;
+  font-family: "Lilita One", sans-serif;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--text);
+}
+.actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
+/* Tlačítka */
 .btn {
   display: inline-block;
-  background: var(--yellow);
-  color: var(--ink);
+  padding: .75rem 1.6rem;
+  border-radius: 6px;
   font-family: "Lilita One", sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: .06em;
   text-transform: uppercase;
   text-decoration: none;
-  letter-spacing: .08em;
-  padding: .8rem 1.8rem;
-  border-radius: 4px;
-  box-shadow: 5px 5px 0 var(--ink);
-  transition: transform .15s, box-shadow .15s;
+  border: 2px solid var(--yellow);
+  transition: background .15s, color .15s;
 }
-.btn:hover { transform: translate(-2px, -2px) rotate(-1deg); box-shadow: 8px 8px 0 var(--ink); }
+.btn-primary { background: var(--yellow); color: var(--ink); }
+.btn-primary:hover { background: #ffe658; border-color: #ffe658; }
+.btn-ghost { color: var(--yellow); }
+.btn-ghost:hover { background: var(--yellow); color: var(--ink); }
 
-/* ---------- Koláž ---------- */
-.collage {
-  max-width: 900px;
-  margin: 2rem auto 4rem;
-  padding: 0 1rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-}
-.tile {
-  background: var(--paper);
-  color: var(--ink);
-  aspect-ratio: 4 / 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: .4rem;
-  box-shadow: 8px 8px 0 rgba(0,0,0,.6);
-  transition: transform .25s;
-}
-.tile .emoji { font-size: clamp(3rem, 12vw, 5.5rem); line-height: 1; }
-.tile figcaption {
-  font-family: "Lilita One", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  font-size: 1.2rem;
-}
-.t1 { transform: rotate(-4deg); background: linear-gradient(135deg, #ffe9a8, #f6a35a); }
-.t2 { transform: rotate(3deg);  background: linear-gradient(135deg, #bff0d4, #5ec1a6); }
-.t3 { transform: rotate(4deg);  background: linear-gradient(135deg, #fff, #cde4f7); }
-.t4 { transform: rotate(-3deg); background: linear-gradient(135deg, #ffb27a, #7a2e1d); color: #fff; }
-.tile:hover { transform: rotate(0) scale(1.05); z-index: 2; }
-
-/* ---------- O co jde ---------- */
-.about {
-  max-width: 720px;
-  margin: 0 auto 4rem;
-  padding: 0 1.2rem;
-  text-align: center;
-  font-size: 1.2rem;
-}
-.about h2, .about p { margin-bottom: 1.2rem; }
+/* Sekce */
+.section { padding: 4rem 0; }
+.section-alt { background: var(--bg-alt); }
 h2 {
   font-family: "Lilita One", sans-serif;
   font-weight: 400;
-  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-size: clamp(1.7rem, 4.5vw, 2.4rem);
   text-transform: uppercase;
+  letter-spacing: .03em;
   color: var(--yellow);
-  text-shadow: 3px 3px 0 var(--ink);
+  margin-bottom: 1rem;
 }
-.about strong { color: var(--yellow); }
+.intro { max-width: 680px; color: var(--muted); margin-bottom: 2rem; }
+.narrow .intro { margin-inline: auto; }
 
-.chips {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: .6rem;
+/* Karty */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; }
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  border-top: 4px solid var(--yellow);
+  padding: 1.4rem;
 }
-.chips li {
-  border: 2px solid var(--yellow);
-  color: var(--yellow);
-  padding: .2rem 1rem;
-  border-radius: 999px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-size: .9rem;
-}
+.card h3 { font-family: "Lilita One", sans-serif; font-weight: 400; font-size: 1.3rem; margin-bottom: .4rem; }
+.card p { color: var(--muted); }
 
-/* ---------- Info box ---------- */
-.info { padding: 0 1rem; margin-bottom: 4rem; }
-.paper {
-  max-width: 820px;
-  margin: 0 auto;
-  background: var(--paper);
-  color: var(--ink);
-  padding: 1.8rem 1.2rem;
+/* Kdy a kde */
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
+.facts div { background: var(--card); border-radius: var(--radius); padding: 1.2rem 1.4rem; }
+.facts dt { color: var(--yellow); text-transform: uppercase; letter-spacing: .12em; font-weight: 700; font-size: .9rem; }
+.facts dd { font-size: 1.3rem; }
+
+/* Kontakt */
+.contacts { list-style: none; font-size: 1.3rem; }
+
+/* Patička */
+.site-footer {
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: .2em;
-  font-size: clamp(1.1rem, 3.4vw, 1.9rem);
-  /* mírně potrhané okraje */
-  clip-path: polygon(0 3%, 4% 0, 12% 2%, 25% 0, 40% 2%, 55% 0, 70% 2%, 85% 0, 100% 3%, 100% 97%, 94% 100%, 80% 98%, 62% 100%, 45% 98%, 28% 100%, 10% 98%, 0 100%);
+  padding: 2rem 0;
+  border-top: 2px solid var(--yellow);
+  color: var(--muted);
+  font-size: .95rem;
 }
-.paper p { line-height: 1.5; }
-.paper b { font-weight: 700; }
-.paper .small { font-size: clamp(.7rem, 2.1vw, 1.05rem); letter-spacing: .15em; margin-top: .3rem; word-break: break-word; }
-.paper a { text-decoration: none; border-bottom: 2px solid var(--yellow); }
-.paper a:hover { background: var(--yellow); }
+.site-footer .tags { color: var(--yellow); margin-bottom: .3rem; }
 
-/* ---------- Hashtagy ---------- */
-.tags {
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: .25em;
-  font-size: clamp(.9rem, 3.4vw, 1.7rem);
-  padding: 0 1rem 3rem;
-  line-height: 1.8;
-  word-break: break-word;
-}
-
-footer {
-  text-align: center;
-  padding: 1.5rem 1rem 2rem;
-  font-size: .85rem;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  opacity: .6;
-}
-
-@media (min-width: 700px) {
-  .collage { grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 1000px; }
-  .tile { aspect-ratio: 3 / 4; }
+@media (max-width: 600px) {
+  .header-inner { justify-content: center; }
+  .site-header ul { gap: .9rem; justify-content: center; }
+  .hero { padding: 3.5rem 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  * { transition: none !important; }
 }
