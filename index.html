@@ -4,98 +4,204 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Deskovky – kroužek deskových her | Gymnázium Klatovy</title>
-  <meta name="description" content="Kroužek deskových her na Gymnáziu Klatovy. Hrajeme každé pondělí od 16:01 v klubovně u bufetu. Pro nováčky i protřelé hráče.">
+  <meta name="description" content="Kroužek deskových her na Gymnáziu Klatovy. Každé pondělí od 16:01 v klubovně u bufetu. Pro nováčky i protřelé hráče.">
+  <meta name="theme-color" content="#16161a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Rubik+Mono+One&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top">Deskovky</a>
-      <nav aria-label="Hlavní navigace">
-        <ul>
-          <li><a href="#o-krouzku">O kroužku</a></li>
-          <li><a href="#kdy-a-kde">Kdy a kde</a></li>
-          <li><a href="#novinky">Novinky</a></li>
-          <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="meeple" viewBox="0 0 24 24"><path d="M12 2a3.2 3.2 0 0 0-3.2 3.2c0 1 .5 1.9 1.2 2.5C8 8.2 6 9.2 3.8 10.8c-.9.6-.6 1.6.3 1.8l3.7.8-2.5 6.3c-.3.9.2 1.6 1.1 1.6H10l2-2.8 2 2.8h3.6c.9 0 1.4-.7 1.1-1.6l-2.5-6.3 3.7-.8c.9-.2 1.2-1.2.3-1.8-2.2-1.6-4.2-2.6-6.2-3.1.7-.6 1.2-1.5 1.2-2.5A3.2 3.2 0 0 0 12 2z"/></symbol>
+</svg>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container">
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#top" aria-label="Deskovky – domů">
+      <svg class="logo-icon"><use href="#meeple"/></svg>
+      <span>Deskovky</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    <nav class="menu" id="menu" aria-label="Hlavní navigace">
+      <a href="#hry">Co hrajeme</a>
+      <a href="#jak-to-funguje">Jak to funguje</a>
+      <a href="#termin">Termín</a>
+      <a href="#faq">Dotazy</a>
+      <a class="btn btn-sm" href="#classroom">Odebírat novinky</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow">Kroužek · Gymnázium Klatovy</p>
         <h1>Deskovky</h1>
-        <p class="lead">Deskovky všech náročností a druhů pro nováčky i protřelé hráče.</p>
+        <p class="lead">Hry všech náročností a druhů pro nováčky i protřelé hráče. Stačí přijít, zbytek zařídíme.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="#novinky">Chci dostávat informace</a>
-          <a class="btn btn-ghost" href="#kdy-a-kde">Kdy a kde hrajeme</a>
+          <a class="btn" href="#classroom">Chci vědět, kdy se hraje</a>
+          <a class="btn btn-outline" href="#termin">Kdy a kde</a>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="o-krouzku">
-      <div class="container">
-        <h2>O kroužku</h2>
-        <p class="intro">Sejdeme se, rozložíme krabice a hrajeme. Nemusíš nic umět – pravidla ti rádi vysvětlíme. A pokud už jsi protřelý hráč, určitě se najde partie, která tě vyzve.</p>
-        <div class="cards">
-          <article class="card">
-            <h3>Pro nováčky</h3>
-            <p>Jednoduchá pravidla, rychlé partie a skvělá příležitost vyzkoušet, co všechno deskovky nabízejí.</p>
-          </article>
-          <article class="card">
-            <h3>Pro protřelé hráče</h3>
-            <p>Hlubší strategie, dlouhé tahy a hry, které se vyplatí poznat do detailu.</p>
-          </article>
-          <article class="card">
-            <h3>Pro každou partu</h3>
-            <p>Karetní hry, rodinné hry, strategie i dobrodružství s figurkami. Vždy si vybereme něco, co baví všechny u stolu.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="kdy-a-kde">
-      <div class="container">
-        <h2>Kdy a kde</h2>
-        <dl class="facts">
-          <div><dt>Kdy</dt><dd>každé pondělí od 16:01</dd></div>
-          <div><dt>Kde</dt><dd>klubovna u bufetu</dd></div>
-          <div><dt>Kde přesně</dt><dd>Gymnázium Klatovy</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="section" id="novinky">
-      <div class="container narrow">
-        <h2>Informace o termínech</h2>
-        <p class="intro">Chceš vědět, kdy se zrovna hraje? Přidej se do našeho kurzu v Google Classroom a všechny informace ti budou chodit.</p>
-        <a class="btn btn-primary" href="https://classroom.google.com/c/NzQzMzQ0NTU4MzE5?cjc=iv2o265" target="_blank" rel="noopener">Přidat se do Google Classroom</a>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="kontakt">
-      <div class="container narrow">
-        <h2>Kontakt</h2>
-        <p class="intro">Máš dotaz? Napiš nám.</p>
-        <ul class="contacts">
-          <li><a href="mailto:dkadlec@gym-kt.cz">dkadlec@gym-kt.cz</a></li>
-          <li><a href="mailto:psykora@gym-kt.cz">psykora@gym-kt.cz</a></li>
+        <ul class="chips">
+          <li><b>Po</b> od 16:01</li>
+          <li>Klubovna u bufetu</li>
         </ul>
       </div>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p class="tags">#kdosihrajenezlobi · #clobrdonehrajeme · #nagymplujefajn</p>
-      <p>Kroužek deskových her · Gymnázium Klatovy</p>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hex"></div>
+        <div class="die die-a"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="die die-b"><i></i><i></i><i></i></div>
+        <svg class="meeple m1"><use href="#meeple"/></svg>
+        <svg class="meeple m2"><use href="#meeple"/></svg>
+        <svg class="meeple m3"><use href="#meeple"/></svg>
+        <div class="card-a"><span>♠</span></div>
+        <div class="card-b"><span>★</span></div>
+      </div>
     </div>
-  </footer>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>Strategie</span><span>Karetní hry</span><span>Rodinné hry</span><span>Dobrodružství</span><span>Párty hry</span><span>Logické hry</span>
+      <span>Strategie</span><span>Karetní hry</span><span>Rodinné hry</span><span>Dobrodružství</span><span>Párty hry</span><span>Logické hry</span>
+    </div>
+  </div>
+
+  <!-- CO HRAJEME -->
+  <section class="section" id="hry">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">Co hrajeme</p>
+        <h2>Pro každého něco na stole</h2>
+        <p>Od hříček na deset minut po pořádné strategie na celé odpoledne. Vybereme to, co bude bavit celou skupinu.</p>
+      </header>
+
+      <div class="bento">
+        <article class="tile tile-lg reveal">
+          <span class="tag">Pro nováčky</span>
+          <h3>Začni snadno</h3>
+          <p>Jednoduchá pravidla, rychlé vysvětlení a první partie hned po příchodu. Nikdo nezačíná od nuly sám.</p>
+        </article>
+        <article class="tile tile-lg tile-dark reveal">
+          <span class="tag">Pro protřelé hráče</span>
+          <h3>Něco pro hloubavce</h3>
+          <p>Složitější hry, delší partie a rozhodnutí, nad kterými se vyplatí přemýšlet.</p>
+        </article>
+        <article class="tile tile-accent reveal">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="16" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="16" cy="8" r="1"/><circle cx="8" cy="16" r="1"/></svg>
+          <h3>Strategie</h3>
+          <p>Plánuj, vyjednávej, buduj.</p>
+        </article>
+        <article class="tile reveal">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="11" height="16" rx="2"/><path d="M9 21h8a2 2 0 0 0 2-2V8"/></svg>
+          <h3>Karty</h3>
+          <p>Rychlé, hravé, napínavé.</p>
+        </article>
+        <article class="tile reveal">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M12 22V12M3 7l9 5 9-5"/></svg>
+          <h3>Dobrodružství</h3>
+          <p>Figurky, mapy a společné příběhy.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- JAK TO FUNGUJE -->
+  <section class="section section-alt" id="jak-to-funguje">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="eyebrow">Jak to funguje</p>
+        <h2>Tři kroky ke hře</h2>
+      </header>
+      <ol class="steps">
+        <li class="reveal"><span class="num">1</span><h3>Přijď</h3><p>V pondělí po škole zamiř do klubovny u bufetu.</p></li>
+        <li class="reveal"><span class="num">2</span><h3>Vyber hru</h3><p>Poradíme, co zahrát podle toho, kolik vás je a co vás baví.</p></li>
+        <li class="reveal"><span class="num">3</span><h3>Hraj</h3><p>Pravidla vysvětlíme a můžeš se pustit do první partie.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- TERMÍN -->
+  <section class="section" id="termin">
+    <div class="wrap">
+      <div class="schedule reveal">
+        <div class="schedule-main">
+          <p class="eyebrow dark">Pravidelně</p>
+          <p class="when">Každé pondělí<br><span>od 16:01</span></p>
+        </div>
+        <div class="schedule-side">
+          <div>
+            <p class="label">Kde</p>
+            <p class="value">Klubovna u bufetu</p>
+          </div>
+          <div>
+            <p class="label">Škola</p>
+            <p class="value">Gymnázium Klatovy</p>
+          </div>
+          <div>
+            <p class="label">Info</p>
+            <p class="value small"><a href="mailto:dkadlec@gym-kt.cz">dkadlec@gym-kt.cz</a><br><a href="mailto:psykora@gym-kt.cz">psykora@gym-kt.cz</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLASSROOM CTA -->
+  <section class="section cta-section" id="classroom">
+    <div class="wrap">
+      <div class="cta reveal">
+        <div>
+          <h2>Ať ti nic neuteče</h2>
+          <p>Přidej se do našeho kurzu v Google Classroom. Budeme tam psát, kdy se zrovna hraje.</p>
+        </div>
+        <a class="btn btn-lg" href="https://classroom.google.com/c/NzQzMzQ0NTU4MzE5?cjc=iv2o265" target="_blank" rel="noopener">Přidat se do Classroomu →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap narrow">
+      <header class="section-head reveal">
+        <p class="eyebrow">Dotazy</p>
+        <h2>Často se ptáte</h2>
+      </header>
+      <div class="faq reveal">
+        <details>
+          <summary>Nikdy jsem nehrál/a. Můžu přijít?</summary>
+          <p>Určitě. Kroužek je pro nováčky i zkušené hráče. Pravidla ti vysvětlíme a najdeme hru, která se hodí na začátek.</p>
+        </details>
+        <details>
+          <summary>Kdy a kde se scházíme?</summary>
+          <p>Každé pondělí od 16:01 v klubovně u bufetu na Gymnáziu Klatovy.</p>
+        </details>
+        <details>
+          <summary>Jak se dozvím, kdy se zrovna hraje?</summary>
+          <p>Přidej se do našeho kurzu v Google Classroom, informace o termínech tam budeme zveřejňovat. Případně nám napiš e‑mail.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <a class="logo" href="#top"><svg class="logo-icon"><use href="#meeple"/></svg><span>Deskovky</span></a>
+    <p class="hashtags">#kdosihrajenezlobi #clobrdonehrajeme #nagymplujefajn</p>
+    <p class="copy">Kroužek deskových her · Gymnázium Klatovy</p>
+  </div>
+</footer>
 
 </body>
 </html>
