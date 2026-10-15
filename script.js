@@ -60,10 +60,19 @@
     date: document.getElementById('cd-date'),
     d: document.getElementById('cd-d'), h: document.getElementById('cd-h'),
     m: document.getElementById('cd-m'), s: document.getElementById('cd-s'),
+    dl: document.getElementById('cd-d-l'), hl: document.getElementById('cd-h-l'),
+    ml: document.getElementById('cd-m-l'), sl: document.getElementById('cd-s-l'),
     rd: document.getElementById('ring-d'), rh: document.getElementById('ring-h'),
     rm: document.getElementById('ring-m'), rs: document.getElementById('ring-s')
   };
   var target = null;
+
+  // Česká čísla: 1 den, 2–4 dny, 0 a 5+ dní
+  var UNITS = {
+    d: ['den', 'dny', 'dní'], h: ['hodina', 'hodiny', 'hodin'],
+    m: ['minuta', 'minuty', 'minut'], s: ['sekunda', 'sekundy', 'sekund']
+  };
+  function plural(n, f) { return n === 1 ? f[0] : (n >= 2 && n <= 4 ? f[1] : f[2]); }
 
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
   function setVal(el, text) {
@@ -85,6 +94,8 @@
     var d = Math.floor(left / 86400), h = Math.floor(left % 86400 / 3600),
         m = Math.floor(left % 3600 / 60), s = left % 60;
     setVal(cd.d, String(d)); setVal(cd.h, pad(h)); setVal(cd.m, pad(m)); setVal(cd.s, pad(s));
+    cd.dl.textContent = plural(d, UNITS.d); cd.hl.textContent = plural(h, UNITS.h);
+    cd.ml.textContent = plural(m, UNITS.m); cd.sl.textContent = plural(s, UNITS.s);
     setRing(cd.rd, left / (STEP_DAYS * 86400));
     setRing(cd.rh, h / 24);
     setRing(cd.rm, m / 60);
