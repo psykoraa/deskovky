@@ -90,7 +90,10 @@
   }
   if (cd.box) {
     tick();
-    setInterval(tick, 1000);
+    // Častější kontrola nevynechá sekundu; po návratu na záložku se hned překreslí
+    setInterval(tick, 250);
+    document.addEventListener('visibilitychange', tick);
+    window.addEventListener('pageshow', tick);
   }
 
   var items = document.querySelectorAll('.reveal');
