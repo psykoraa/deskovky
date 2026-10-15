@@ -61,9 +61,7 @@
     d: document.getElementById('cd-d'), h: document.getElementById('cd-h'),
     m: document.getElementById('cd-m'), s: document.getElementById('cd-s'),
     dl: document.getElementById('cd-d-l'), hl: document.getElementById('cd-h-l'),
-    ml: document.getElementById('cd-m-l'), sl: document.getElementById('cd-s-l'),
-    rd: document.getElementById('ring-d'), rh: document.getElementById('ring-h'),
-    rm: document.getElementById('ring-m'), rs: document.getElementById('ring-s')
+    ml: document.getElementById('cd-m-l'), sl: document.getElementById('cd-s-l')
   };
   var target = null;
 
@@ -75,14 +73,7 @@
   function plural(n, f) { return n === 1 ? f[0] : (n >= 2 && n <= 4 ? f[1] : f[2]); }
 
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
-  function setVal(el, text) {
-    if (el.textContent === text) return;
-    el.textContent = text;
-    el.classList.remove('bump');
-    void el.offsetWidth;
-    el.classList.add('bump');
-  }
-  function setRing(el, frac) { el.style.strokeDashoffset = String(100 - Math.max(0, Math.min(1, frac)) * 100); }
+  function setVal(el, text) { el.textContent = text; }
 
   function tick() {
     var now = Date.now();
@@ -96,10 +87,6 @@
     setVal(cd.d, String(d)); setVal(cd.h, pad(h)); setVal(cd.m, pad(m)); setVal(cd.s, pad(s));
     cd.dl.textContent = plural(d, UNITS.d); cd.hl.textContent = plural(h, UNITS.h);
     cd.ml.textContent = plural(m, UNITS.m); cd.sl.textContent = plural(s, UNITS.s);
-    setRing(cd.rd, left / (STEP_DAYS * 86400));
-    setRing(cd.rh, h / 24);
-    setRing(cd.rm, m / 60);
-    setRing(cd.rs, s / 60);
   }
   if (cd.box) {
     tick();
