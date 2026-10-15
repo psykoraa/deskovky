@@ -149,12 +149,25 @@ h1, h2, h3 { font-family: var(--font-head); font-weight: 400; line-height: 1.05;
 .schedule-main { padding: 3.2rem; }
 .when { font-family: var(--font-head); font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1; }
 .when span { font-family: "Rubik Mono One", var(--font-head); font-size: .75em; }
-.countdown { margin: 0 0 2.2rem; }
-.countdown-label { font-weight: 700; font-size: .95rem; letter-spacing: .14em; text-transform: uppercase; color: var(--yellow); margin-bottom: .9rem; }
-.countdown-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .8rem; max-width: 620px; }
-.countdown-grid div { background: var(--surface); border: 2px solid rgba(255,217,19,.45); border-radius: 20px; padding: 1rem .5rem .8rem; text-align: center; box-shadow: 0 18px 40px -20px rgba(255,217,19,.35); }
-.countdown-grid b { display: block; font-family: "Rubik Mono One", var(--font-head); font-weight: 400; font-size: clamp(2rem, 7vw, 4rem); line-height: 1.1; color: var(--yellow); font-variant-numeric: tabular-nums; }
-.countdown-grid span { font-weight: 700; font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.countdown { margin: 0 0 2.4rem; }
+.countdown-label { display: inline-flex; align-items: center; gap: .6rem; font-weight: 700; font-size: .85rem; letter-spacing: .2em; text-transform: uppercase; color: var(--yellow); margin-bottom: .25rem; }
+.pulse { width: 10px; height: 10px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 0 0 rgba(255,217,19,.7); animation: pulse 1.6s ease-out infinite; }
+@keyframes pulse { to { box-shadow: 0 0 0 12px rgba(255,217,19,0); } }
+.countdown-date { font-family: var(--font-head); font-size: clamp(1.15rem, 2.6vw, 1.55rem); margin-bottom: 1.2rem; }
+.countdown-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.5rem, 1.6vw, 1rem); max-width: 600px; }
+.cd-unit { position: relative; aspect-ratio: 1; border-radius: 26px; background: radial-gradient(circle at 30% 20%, #2e2e37, #19191e 70%); border: 1px solid var(--line); box-shadow: 0 22px 40px -22px rgba(255,217,19,.45), inset 0 1px 0 rgba(255,255,255,.08); display: grid; place-items: center; transition: transform .25s; }
+.cd-unit:hover { transform: translateY(-4px) rotate(-1.5deg); }
+.cd-unit svg { position: absolute; inset: 7%; width: 86%; height: 86%; transform: rotate(-90deg); }
+.ring-bg, .ring-fg { fill: none; stroke-width: 5; }
+.ring-bg { stroke: rgba(255,255,255,.07); }
+.ring-fg { stroke: var(--yellow); stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; filter: drop-shadow(0 0 4px rgba(255,217,19,.7)); transition: stroke-dashoffset .9s linear; }
+.cd-sec .ring-fg { stroke: #fff; filter: drop-shadow(0 0 5px rgba(255,255,255,.7)); }
+.cd-val { position: relative; text-align: center; line-height: 1; }
+.cd-val b { display: block; font-family: "Rubik Mono One", var(--font-head); font-weight: 400; font-size: clamp(1.5rem, 5.2vw, 2.9rem); color: var(--yellow); font-variant-numeric: tabular-nums; text-shadow: 0 0 22px rgba(255,217,19,.45); }
+.cd-sec .cd-val b { color: #fff; text-shadow: 0 0 22px rgba(255,255,255,.4); }
+.cd-val b.bump { animation: bump .45s ease-out; }
+@keyframes bump { 0% { transform: translateY(-35%) scale(.85); opacity: 0; } 100% { transform: none; opacity: 1; } }
+.cd-val span { display: block; margin-top: .45rem; font-weight: 700; font-size: clamp(.6rem, 1.5vw, .78rem); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .schedule-side { background: var(--ink); color: var(--text); padding: 3rem; display: grid; gap: 1.5rem; align-content: center; }
 .label { font-weight: 700; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--yellow); }
 .value { font-family: var(--font-head); font-size: 1.6rem; line-height: 1.2; }
@@ -212,15 +225,18 @@ h1, h2, h3 { font-family: var(--font-head); font-weight: 400; line-height: 1.05;
   .menu .btn { margin-top: 1rem; }
 }
 @media (max-width: 520px) {
+  .hero { padding-top: 6rem; }
+  .hero-art { max-width: 190px; }
+  .hero h1 { margin-bottom: 1rem; }
+  .lead { margin-bottom: 1.4rem; }
   .bento { grid-template-columns: 1fr; }
   .tile-lg { grid-column: span 1; }
   .schedule-main, .schedule-side { padding: 2rem 1.6rem; }
-  .countdown-grid { gap: .5rem; }
-  .countdown-grid div { border-radius: 14px; padding: .7rem .2rem .55rem; }
+  .cd-unit { border-radius: 18px; }
   .btn-lg { white-space: normal; text-align: center; width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .die, .meeple, .card-a, .card-b, .track { animation: none; }
+  .die, .meeple, .card-a, .card-b, .track, .pulse, .cd-val b.bump { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
