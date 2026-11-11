@@ -19,8 +19,8 @@
   onScroll();
 
   /* ---------- Odpočet na nejbližší hraní ---------- */
-  // První hraní: 19. 10. 2026 16:01 (pražský čas), pak každých 14 dní.
-  var FIRST = { y: 2026, m: 10, d: 19, h: 16, min: 1 };
+  // Nejbližší hraní: 23. 11. 2026 16:01 (pražský čas), pak každých 14 dní.
+  var FIRST = { y: 2026, m: 11, d: 23, h: 16, min: 1 };
   var STEP_DAYS = 14;
 
   // Poslední neděle v měsíci v 01:00 UTC = přechod na letní / zimní čas (EU)
